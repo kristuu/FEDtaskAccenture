@@ -22,30 +22,47 @@
 		<main class="mt-5">
 			<div class="container-lg">
 				<div class="bg-white shadow-lg rounded-3 text-center px-4 py-4">
-					<form class="row">
-						<div class="col-12">
-							<h2 id="question-text">Question</h2>
+					
+					<section id="welcome-setup">
+						<div class="row">
+							<h1 class="col-12">Welcome to the Questionnaire!</h1>
+							<div class="col-md-6 mt-3">
+								<label for="category" class="form-label">Select category:</label>
+								<select id="category" class="form-select">
+								</select>
+							</div>
+							<div class="col-md-6 mt-3">
+								<label for="question-count" class="form-label">Select amount of questions:</label>
+								<input type="range" id="question-count" class="form-range" min="1" max="20" value="10" step="1" oninput="updateCurrentRangeValue(this.value);">
+								<span id="current-range-value">10</span>
+							</div>
+							<div class="col-12 mt-3">
+								<button type="button" class="btn btn-primary text-white fw-bold my-auto w-100" onclick="startQuestionnaire();">START</button>
+							</div>
 						</div>
+					</section>
+
+					<form class="row" id="questionnaire-form" hidden>
+						<h5 id="category-text">Category</h5>
+						<h6 id="question-counter">0/0</h6>
+						<h2 id="question-text">Question</h2>
 						<div
 							class="col-12 row mx-auto justify-content-center"
 							id="answer-options-list"
 						>
 							<div class="col-lg-4 p-2" id="answer-option">
-								<button class="btn btn-primary">asda</button>
-							</div>
-							<div class="col-lg-4 p-2" id="answer-option">
-								<div class="card bg-primary text-white">asda</div>
-							</div>
-							<div class="col-lg-4 p-2" id="answer-option">
-								<div class="card bg-primary text-white">asda</div>
-							</div>
-							<div class="col-lg-4 p-2" id="answer-option">
-								<div class="card bg-primary text-white">asda</div>
-							</div>
-							<div class="col-lg-4 p-2" id="answer-option">
-								<div class="card bg-primary text-white">asda</div>
 							</div>
 						</div>
+						<div class="col-12 mt-4 d-flex justify-content-between">
+							<div class="d-flex flex-column">
+								<span><strong>Current score:</strong></span>
+								<span id="current-score">0</span>
+							</div>
+							<div id="nav-buttons">
+								<button type="button" class="nav-btn btn btn-warning" onclick="previousQuestion();">
+									<em>START OVER</em>
+								</button>
+							</div>
 					</form>
 				</div>
 			</div>
